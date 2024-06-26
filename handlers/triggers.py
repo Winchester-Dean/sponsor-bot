@@ -1,5 +1,6 @@
 import os
 from aiogram import types
+from aiogram.dispatcher.filters import Text
 from dispatcher import dp, bot
 
 @dp.message_handler(Text("iOS ucin", ignore_case=True))
@@ -8,7 +9,7 @@ async def ios_code(msg: types.Message):
     for file in os.listdir(directory):
         await bot.send_document(
             msg.chat.id,
-            file,
+            f"{directory}/{file}",
             "Bet kod"
         )
 
@@ -16,8 +17,9 @@ async def ios_code(msg: types.Message):
 async def android_code(msg: types.Message):
     directory = "configs/android"
     for file in os.listdir(directory):
-        await bot.send_document(
-            msg.chat.id,
-            file,
-            "bet kod"
+        with open(f"{directory}/{file}", "rb") as f:
+            await bot.send_document(
+                msg.chat.id,
+                f,
+                "bet kod"
         )

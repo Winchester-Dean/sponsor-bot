@@ -1,5 +1,7 @@
 import os
 
+from aiogram.utils import executor
+
 from dispatcher import dp
 from handlers import *
 
