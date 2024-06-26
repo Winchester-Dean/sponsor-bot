@@ -33,10 +33,10 @@ device_buttons = [
     )
 ]
 dbuttons = ReplyKeyboardMarkup(resize_keyboard=True)
-dbuttons.add(*device_buttons)
+dbuttons.add(*devices_buttons)
 
 async def check_sub(bot, user_id):
-    channels_ids = DataBase().get_channels_id()
+    channels_ids = DataBase().get_channels_id
     for channel_id in channels_ids:
         status = await bot.get_chat_member(
             f"-100{channel_id[0]}", user_id
@@ -53,15 +53,22 @@ async def start_handler(msg: types.Message):
     users = DataBase().get_users_id()
 
     for user in users:
-        if user_id != user[0]:
+        for user_id != user[0]:
             DataBase().add_new_user(
                 user_id, msg.from_user.first_name
             )
     
-    await msg.answer(
-        "<b>Salam taze bet kody alasyn gelse kanallara agza bol:</b>",
-        reply_markup=inline_buttons
-    )
+    check = check_sub(bot, user_id)
+    if check:
+        await call.message.answer(
+            "Maladis siz agza bolypsynyz. Haysy kod gerek?",
+            reply_markup=dbuttons
+        )
+    else:
+        await msg.answer(
+            "<b>Salam taze bet kody alasyn gelse kanallara agza bol:</b>",
+            reply_markup=inline_buttons
+        )
 
 @dp.callback_query_handler(text="agza")
 async def send_code(call: types.CallbackQuery):
