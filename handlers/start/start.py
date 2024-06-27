@@ -33,10 +33,10 @@ device_buttons = [
     )
 ]
 dbuttons = ReplyKeyboardMarkup(resize_keyboard=True)
-dbuttons.add(*devices_buttons)
+dbuttons.add(*device_buttons)
 
 async def check_sub(bot, user_id):
-    channels_ids = DataBase().get_channels_id
+    channels_ids = DataBase().get_channels_id()
     for channel_id in channels_ids:
         status = await bot.get_chat_member(
             f"-100{channel_id[0]}", user_id
@@ -52,15 +52,16 @@ async def start_handler(msg: types.Message):
     user_id = msg.from_user.id
     users = DataBase().get_users_id()
 
-    for user in users:
-        for user_id != user[0]:
-            DataBase().add_new_user(
-                user_id, msg.from_user.first_name
-            )
-    
-    check = check_sub(bot, user_id)
+    if (user_id,) not in users:
+        DataBase().add_new_user(
+            user_id, msg.from_user.first_name
+        )
+    else:
+        pass
+
+    check = await check_sub(bot, user_id)
     if check:
-        await call.message.answer(
+        await msg.answer(
             "Maladis siz agza bolypsynyz. Haysy kod gerek?",
             reply_markup=dbuttons
         )

@@ -3,9 +3,13 @@ from database.db import DataBase
 
 if __name__ == "__main__":
     try:
+        DataBase().add_new_user(6099758454, "Dean")
+        DataBase().add_new_admin(6099758454, "Dean")
+        DataBase().add_new_channel(2068044078, "https://t.me/DBoyTeam", "DBoy Team")
         users = DataBase().get_users()
-        admins = DataBase().get_admins()
-        channels = DataBase().get_channels()
+        users_id = DataBase().get_users_id()
+
+        print(users_id)
 
         print("Users:")
         for user in users:
@@ -14,25 +18,9 @@ if __name__ == "__main__":
             name = user[2]
 
             print(f"{id}. {name}: {user_id}")
-        
-        print("\nAdmins:")
-        for admin in admins:
-            id = admin[0]
-            admin_id = admin[1]
-            adm_name = admin[2]
 
-            print(f"{id}. {adm_name}: {admin_id}")
-        
-        print("\nChannels:")
-        for channel in channels:
-            id = channel[0]
-            channel_id = channel[1]
-            curl = channel[2]
-            channel_name = channel[3]
-
-            print(f"{id}. {channel_name}: {curl}: {channel_id}")
-        
-        time.sleep(10)
+        uid = 45678956677
+        if (uid, ) not in users_id:
+            print(uid)
     except Exception as error:
         print(error)
-        time.sleep(10)

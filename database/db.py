@@ -10,7 +10,7 @@ class DataBase:
             self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS users(
                     id INTEGER PRIMARY KEY,
-                    user_id INTEGER NOT NULL,
+                    user_id INTEGER NOT NULL UNIQUE,
                     name TEXT NOT NULL
                 )
             """)
