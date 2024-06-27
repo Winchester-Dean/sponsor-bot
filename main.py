@@ -4,6 +4,8 @@ from aiogram.utils import executor
 from dispatcher import dp
 from handlers import *
 
+print()
+
 if __name__ == "__main__":
     if os.name == "nt":
         os.system("cls")
