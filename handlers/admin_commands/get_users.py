@@ -22,7 +22,7 @@ async def get_users(msg: types.Message):
         user_id = user[1]
         name = user[2]
 
-        text += "{}. <a href='tg://user?id={}'>{}</a>".format(
+        text += "<b>{}. <a href='tg://user?id={}'>{}</a></b>\n".format(
             db_uid, user_id, name
         )
     

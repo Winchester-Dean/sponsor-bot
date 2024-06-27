@@ -16,12 +16,13 @@ async def get_admins(msg: types.Message):
         "<b>Admins list:\n</b>"
     )
 
-    for admin in admins_list:
-        db_uid = user[0]
-        admin_id = user[1]
-        name = user[2]
+    admins = DataBase().get_admins()
+    for admin in admins:
+        db_uid = admin[0]
+        admin_id = admin[1]
+        name = admin[2]
 
-        text += "{}. <a href='tg://user?id={}'>{}</a>".format(
+        text += "<b>{}. <a href='tg://user?id={}'>{}</a></b>\n".format(
             db_uid, admin_id, name
         )
     
