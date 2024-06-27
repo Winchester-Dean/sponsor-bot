@@ -11,8 +11,8 @@ channels = DataBase().get_channels()
 for channel in channels:
     inline_buttons.add(
         InlineKeyboardButton(
-            text=channel[2],
-            url=channel[1]
+            text=channel[3],
+            url=channel[2]
         )
     )
 

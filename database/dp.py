@@ -48,7 +48,7 @@ class DataBase:
     
     def get_channels(self):
         self.cursor.execute(
-            "SELECT chid, curl, name FROM channels"
+            "SELECT * FROM channels"
         )
         return self.cursor.fetchall()
     
