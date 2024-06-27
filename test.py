@@ -3,9 +3,9 @@ from database.db import DataBase
 
 if __name__ == "__main__":
     try:
-        #DataBase().add_new_user(6099758454, "Dean")
-        #DataBase().add_new_admin(6099758454, "Dean")
-        '''DataBase().add_new_channel(
+        DataBase().add_new_user(6099758454, "Dean")
+        DataBase().add_new_admin(6099758454, "Dean")
+        DataBase().add_new_channel(
             2068044078,
             "https://t.me/DBoyTeam",
             "𝘿𝘽𝙤𝙮 𝙏𝙚𝙖𝙢"
@@ -24,12 +24,7 @@ if __name__ == "__main__":
             1887276118,
             "https://t.me/mega_serverss",
             "𝗠𝗘𝗚𝗔 𝗦𝗘𝗥𝗩𝗘𝗥𝗦 🛡"
-        )'''
-
-        channels = DataBase().get_channels()
-        print("Channels:\n")
-        for channel in channels:
-            print(channel)
+        )
 
         '''
         users = DataBase().get_users()

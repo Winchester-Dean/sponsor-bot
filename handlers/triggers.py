@@ -4,9 +4,17 @@ from aiogram import types
 from aiogram.dispatcher.filters import Text
 from dispatcher import dp, bot
 
+from handlers.start.start import check_sub
+
 @dp.message_handler(Text("Android ucin", ignore_case=True))
 async def android_code(msg: types.Message):
     try:
+        status = await check_sub(bot, msg.from_user.id)
+        if status:
+            pass
+        else:
+            return
+
         directory = "configs/android"
         files = [
             ".nm", ".dark", ".hc", ".npv4"
@@ -28,6 +36,12 @@ async def android_code(msg: types.Message):
 @dp.message_handler(Text("iOS ucin", ignore_case=True))
 async def ios_code(msg: types.Message):
     try:
+        status = await check_sub(bot, msg.from_user.id)
+        if status:
+            pass
+        else:
+            return
+
         directory = "configs/ios"
         for file in os.listdir(directory):
             if file.endswith(".inpv"):

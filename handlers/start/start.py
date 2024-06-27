@@ -5,19 +5,17 @@ from dispatcher import dp, bot
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-buttons = []
+inline_buttons = InlineKeyboardMarkup(row_width=1)
 
 channels = DataBase().get_channels()
 for channel in channels:
-    buttons.append(
+    inline_buttons.add(
         InlineKeyboardButton(
-            text=channel[3],
-            url=channel[2]
+            text=channel[2],
+            url=channel[1]
         )
     )
 
-inline_buttons = InlineKeyboardMarkup(row_width=1)
-inline_buttons.add(*buttons)
 inline_buttons.add(
     InlineKeyboardButton(
         text="Agza boldym", callback_data="agza"
@@ -37,15 +35,20 @@ dbuttons.add(*device_buttons)
 
 async def check_sub(bot, user_id):
     channels_ids = DataBase().get_channels_id()
-    for channel_id in channels_ids:
-        status = await bot.get_chat_member(
-            f"-100{channel_id[0]}", user_id
-        )
+    stats = []
 
-        if status["status"] != "left":
-            return True
-        else:
-            return False
+    for channel_id in channels_ids:
+        for chid in channel_id:
+            status = await bot.get_chat_member(
+                f"-100{chid}", user_id
+            )
+            stats.append(status["status"])
+    
+    print(stats)
+    if "left" in stats:
+        return False
+    else:
+        return True
 
 @dp.message_handler(commands=["start"])
 async def start_handler(msg: types.Message):
