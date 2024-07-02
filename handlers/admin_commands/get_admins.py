@@ -3,27 +3,28 @@ from dispatcher import dp
 from database.db import DataBase
 
 @dp.message_handler(commands=["getadmins"])
-async def get_admins(msg: types.Message):
+async def get_admins_list(msg: types.Message):
     admins_list = DataBase().get_admins_id()
     user_id = msg.from_user.id
 
-    if (user_id,) in admins_list:
-        pass
-    else:
-        return
-    
+    if (user_id,) not in admins_list:
+        return await msg.reply(
+            "<b>Вы не администратор!</b>"
+        )
+
     text = (
         "<b>Admins list:\n</b>"
     )
 
     admins = DataBase().get_admins()
     for admin in admins:
-        db_uid = admin[0]
+        dbid = admin[0]
         admin_id = admin[1]
         name = admin[2]
-
-        text += "<b>{}. <a href='tg://user?id={}'>{}</a></b>\n".format(
-            db_uid, admin_id, name
+        
+        text += "{}. <a href='tg://user?id={}'>{}</a>: <code>{}</code>\n".format(
+            dbid, admin_id, name, admin_id
         )
-    
+
     await msg.answer(text)
+
