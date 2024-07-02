@@ -14,7 +14,7 @@ async def add_channel(msg: types.Message):
         )
 
     if len(args) == 4:
-        continue
+        pass
     else:
         return await msg.reply("<b>Error</b>")
     

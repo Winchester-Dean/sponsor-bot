@@ -15,14 +15,14 @@ async def delete_admin(msg: types.Message):
         )
     
     if len(args) == 2:
-        continue
+        pass
     else:
         return await msg.reply("<b>Error</b>")
     
     if args[1].isdigit():
         channel_id = int(args[1])
         if (channel_id,) in channels_id:
-            continue
+            pass
         else:
             return await msg.reply(
                 "<b>Такого канала нету в базе!</b>"

@@ -28,7 +28,7 @@ async def new_admin(msg: types.Message):
             admin_id, args[2]
         )
     except Exception as error:
-        await msg.asnwer(
+        await msg.answer(
             "<b>{}</b>".format(
                 error
             )

@@ -11,8 +11,7 @@ class DataBase:
                 CREATE TABLE IF NOT EXISTS users(
                     id INTEGER PRIMARY KEY,
                     user_id INTEGER NOT NULL UNIQUE,
-                    name TEXT NOT NULL,
-                    username TEXT
+                    name TEXT NOT NULL
                 )
             """)
 
@@ -29,7 +28,7 @@ class DataBase:
             self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS channels(
                     id INTEGER PRIMARY KEY,
-                    channel_id INTEGER NOT NULL UNIQUE,
+                    chid INTEGER NOT NULL UNIQUE,
                     curl TEXT NOT NULL,
                     name TEXT NOT NULL
                 )
@@ -55,7 +54,7 @@ class DataBase:
         return self.cursor.fetchall()
     
     def get_channels(self):
-        self.cusor.execute(
+        self.cursor.execute(
             "SELECT * FROM channels"
         )
         return self.cursor.fetchall()
@@ -74,7 +73,7 @@ class DataBase:
     
     def get_channels_id(self):
         self.cursor.execute(
-            "SELECT channel_id FROM channels"
+            "SELECT chid FROM channels"
         )
         return self.cursor.fetchall()
 

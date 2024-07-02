@@ -1,5 +1,5 @@
 from aiogram import types
-from dispatcher import dp
+from dispatcher import dp, bot
 from database.db import DataBase
 
 from handlers.start.check_sub import checksub

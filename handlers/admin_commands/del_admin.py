@@ -15,14 +15,14 @@ async def delete_admin(msg: types.Message):
         )
 
     if len(args) == 2:
-        continue
+        pass
     else:
         return await msg.reply("<b>Error</b>")
     
     if args[1].isdigit():
         admin_id = int(args[1])
         if (admin_id,) in admins_list:
-            continue
+            pass
         else:
             return await msg.reply(
                 "<b>Такого администратора нету в базе!</b>"

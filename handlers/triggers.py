@@ -5,13 +5,13 @@ from dispatcher import dp, bot
 from aiogram.dispatcher.filters import Text
 
 from handlers.start.keyboards import inline_buttons
-from handlers.start.chech_sub import checksub
+from handlers.start.check_sub import checksub
 
 @dp.message_handler(Text("iOS ucin", ignore_case=True))
 async def ios_handler(msg: types.Message):
     status = await checksub(bot, msg.from_user.id)
     if status:
-        continue
+        pass
     else:
         return await msg.answer(
             "<b>Siz agza bolmansynyz!</b>",
@@ -37,7 +37,7 @@ async def ios_handler(msg: types.Message):
 async def android_handler(msg: types.Message):
     status = await checksub(bot, msg.from_user.id)
     if status:
-        continue
+        pass
     else:
         return await msg.answer(
             "<b>Siz agza bolmansynyz!</b>",

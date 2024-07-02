@@ -1,6 +1,6 @@
 from database.db import DataBase
 
-async def shecksub(bot, user_id):
+async def checksub(bot, user_id):
     channels_id = DataBase().get_channels_id()
     stats = []
 

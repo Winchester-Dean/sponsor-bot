@@ -21,10 +21,9 @@ async def get_users_list(msg: types.Message):
         dbid = user[0]
         user_id = user[1]
         name = user[2]
-        username = user[3]
 
-        text += "<b>{}. <a href='tg://user?id={}'>{}</a>: {}\n</b>".format(
-            dbid, user_id, name, username
+        text += "<b>{}. <a href='tg://user?id={}'>{}</a>\n</b>".format(
+            dbid, user_id, name
         )
 
     await msg.answer(text)
