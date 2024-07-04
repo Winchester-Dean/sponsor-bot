@@ -14,10 +14,7 @@ async def send_database(msg: types.Message):
             "<b>вы не главный администратор!</b>"
         )
 
-    database_file_path = os.path.join(
-        os.path.dirname(__file__),
-        "database/database.db"
-    )
+    database_file_path = os.path.join("database/database.db")
 
     try:
         with open(database_file_path, "rb") as file:

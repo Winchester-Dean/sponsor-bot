@@ -18,18 +18,19 @@ async def ios_handler(msg: types.Message):
             reply_markup=inline_buttons
         )
     
-    directory_path = os.path.join(
-        os.path.dirname(__file__),
-        "configs/ios"
-    )
+    directory = "configs/ios"
 
     try:
-        with open(directory_path, "rb") as file:
-            await bot.send_document(
-                chat_id = msg.chat.id,
-                document=file,
-                caption="iOS ucin bet kod"
-            )
+        for file in os.listdir(directory):
+            if file.endswith(".inpv"):
+                file_path = os.path.join(f"{directory}/{file}")
+                
+                with open(file_path, "rb") as config:
+                    await bot.send_document(
+                        chat_id = msg.chat.id,
+                        document=config,
+                        caption="iOS ucin bet kod"
+                    )
     except Exception as error:
         await msg.answer(f"<b>{error}</b>")
     
@@ -49,15 +50,13 @@ async def android_handler(msg: types.Message):
         ".npv4", ".hc"
     ]
 
-    directory_path = os.path.join(
-        os.path.dirname(__file__),
-        "configs/android"
-    )
+    directory = "configs/android"
 
     try:
-        for file in os.listdir(directory_path):
+        for file in os.listdir(directory):
             if any(file.endswith(ext) for ext in file_ends):
-                with open(directory_path, "rb") as config:
+                file_path = os.path.join(f"{directory}/{file}")
+                with open(file_path, "rb") as config:
                     await bot.send_document(
                         chat_id=msg.chat.id,
                         document=config,

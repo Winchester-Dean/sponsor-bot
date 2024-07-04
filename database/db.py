@@ -105,7 +105,7 @@ class DataBase:
         with self.connect:
             self.cursor.execute(
                 "INSERT INTO admins(admin_id, name) "
-                "WHERE (?, ?)",
+                "VALUES (?, ?)",
                 [admin_id, name]
             )
     

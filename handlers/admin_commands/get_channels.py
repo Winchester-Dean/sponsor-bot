@@ -23,7 +23,7 @@ async def get_channels_list(msg: types.Message):
         curl = channel[2]
         name = channel[3]
 
-        text += "{}. <a href='{}'>{}</a>: <code>{}</code>\n".format(
+        text += "{}. <a href='{}'>{}</a>:\n<code>{}</code>\n".format(
             dbid, curl, name, channel_id
         )
 
