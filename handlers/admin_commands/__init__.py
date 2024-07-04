@@ -7,4 +7,4 @@ from . import send_db
 from . import del_admin
 from . import del_channel
 from . import restart
-
+from . import spam

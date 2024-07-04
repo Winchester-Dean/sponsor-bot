@@ -16,7 +16,7 @@ async def new_admin(msg: types.Message):
     if len(args) == 3:
         pass
     else:
-        await msg.reply("<b>Error</b>")
+        return await msg.reply("<b>Error</b>")
 
     if args[1].isdigit():
         admin_id = int(args[1])

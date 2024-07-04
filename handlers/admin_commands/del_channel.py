@@ -2,10 +2,10 @@ from aiogram import types
 from dispatcher import dp
 from database.db import DataBase
 
-@dp.message_handler(commands=["deladmin"])
-async def delete_admin(msg: types.Message):
+@dp.message_handler(commands=["delchannel"])
+async def delete_channel(msg: types.Message):
     args = msg.text.split(maxsplit=1)
-    admins_list = DataBase().get_admins_list()
+    admins_list = DataBase().get_admins_id()
     channels_id = DataBase().get_channels_id()
     user_id = msg.from_user.id
 
@@ -21,9 +21,7 @@ async def delete_admin(msg: types.Message):
     
     if args[1].isdigit():
         channel_id = int(args[1])
-        if (channel_id,) in channels_id:
-            pass
-        else:
+        if (channel_id,) not in channels_id:
             return await msg.reply(
                 "<b>Такого канала нету в базе!</b>"
             )
