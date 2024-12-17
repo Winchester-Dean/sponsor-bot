@@ -1,3 +1,0 @@
-API_TOKEN = "7550504312:AAHwsHszaL4h9mxqi3Qn3xTKKyIkmH2LbfM"
-
-owner_id = 7715901172
